@@ -14,7 +14,10 @@ You can use the app itself to track your yourkout.
 
 ### Future Plans:
 1. Add a section to track your daily progress.
-2. Import and export or backup functionality
+2. Import and export or backup functionality.
 	(All data is currently stored locally on your indexedDB)
+3. Confirmation to cancel changes.
+4. Categorization and searching of the exercises.
+
 
 
