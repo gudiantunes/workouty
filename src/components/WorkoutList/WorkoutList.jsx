@@ -9,7 +9,11 @@ function WorkoutList({ days }) {
   async function fetchWorkouts() {
     const data = await database.workouts.toArray();
     return data.filter((i) => {
-      return i.weekdays.some((day) => days.includes(day));
+      
+      if (i.weekdays.length > 0) {
+        return i.weekdays.some((day) => days.includes(day));
+      }
+      return true;
     });
   }
 
