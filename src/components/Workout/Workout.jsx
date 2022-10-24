@@ -22,12 +22,12 @@ function StartBtn(props) {
 
 function Workout({ workout }) {
   const navigate = useNavigate();
-  
+
   return (
     <WorkoutWrapper key={workout.id}>
       {/* <div className='left'></div> */}
       <StartBtn onClick={() => navigate(`/preview-workout/${workout.id}`)} />
-      <h2>{workout.name}</h2>
+      <span className='name'>{workout.name}</span>
       <Editbtn onClick={() => navigate(`/edit-workout/${workout.id}`)} />
       {/* <div className='right'>
       </div> */}
