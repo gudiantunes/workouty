@@ -34,9 +34,8 @@ function PreviewWorkout(props) {
       for (let i = 0; i < Number.parseInt(exercise.sets); i++) {
         const newExercise = {
           ...exercise,
-          id: exercise.name + i,
           sets: i + 1,
-          idx: exercise.id,
+          idx: exercise.name + i,
         };
         newExerciseArray.push(newExercise);
       }
@@ -46,13 +45,14 @@ function PreviewWorkout(props) {
 
   async function loadWorkoutInfo() {
     const data = await database.workouts.get(Number.parseInt(workoutid));
-    exerciseData.current = data.exercises;
+    // exerciseData.current = data.exercises;
     return data.exercises;
   }
 
   async function loadWorkoutExercises(data) {
     const tmpExerciseData = await database.exercises.bulkGet(data);
     const sub = subdivideExercises(tmpExerciseData);
+    // exerciseData.current = sub.map((i) => i.idx);
     setExercises(sub);
   }
 
@@ -63,7 +63,6 @@ function PreviewWorkout(props) {
 
   function handleMoveDown(exId) {
     const nArray = moveArrayItemDown(exercises, exId);
-
     setExercises(nArray);
   }
 
@@ -76,7 +75,7 @@ function PreviewWorkout(props) {
   }, []);
 
   useEffect(() => {
-    exerciseData.current = exercises.map((i) => i.idx);
+    exerciseData.current = exercises.map((i) => i.id);
   }, [exercises]);
 
   return (
@@ -92,7 +91,7 @@ function PreviewWorkout(props) {
           onClick={() => {
             navigate(
               `/activity/${workoutid}/${restTime}/${exerciseData.current.join(
-                ''
+                '-'
               )}`
             );
             // handleCreateWorkout();
@@ -111,7 +110,7 @@ function PreviewWorkout(props) {
         {exercises.map((exercise, idx) => {
           return (
             <ExerciseSet
-              key={exercise.id}
+              key={exercise.idx}
               exercise={exercise}
               moveable
               editable

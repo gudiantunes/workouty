@@ -20,6 +20,7 @@ export const TextBox = styled.pre`
   border-radius: 0.5em;
   background-color: var(--background-1-dark);
   overflow: auto;
+  white-space: pre-wrap;
 `;
 
 export const QuoteBox = styled.div`
@@ -36,6 +37,6 @@ export const QuoteBox = styled.div`
 export const MainLink = styled.a`
   color: var(--accent-color);
   &:hover {
-    color: var(--accent-color-dark)
+    color: var(--accent-color-dark);
   }
 `;

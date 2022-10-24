@@ -165,7 +165,7 @@ function EditWorkout(props) {
           </DaySelectorBtn>
         ))}
       </ShowDays>
-      <form>
+      <form onSubmit={(e) => e.preventDefault()}>
         <NameField
           type='text'
           placeholder='name'

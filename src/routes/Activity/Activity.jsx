@@ -20,9 +20,10 @@ function Activity(props) {
   const { workoutid, resttime, exerciseidx } = useParams();
 
   async function getExercise(exId) {
-    if (Number.parseInt(exerciseidx[exId])) {
+    const exercises = exerciseidx.split('-');
+    if (Number.parseInt(exercises[exId])) {
       const data = await database.exercises.get(
-        Number.parseInt(exerciseidx[exId])
+        Number.parseInt(exercises[exId])
       );
       setExercise(data);
     }
