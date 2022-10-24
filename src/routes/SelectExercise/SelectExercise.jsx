@@ -17,11 +17,19 @@ import {
 import ExerciseSet from '../../components/Exercise/ExerciseSet';
 
 function SelectExercise(props) {
-  const [selectedExercises, setSelectedExercises] = useState([]);
-
   const { workoutid } = useParams();
   const navigate = useNavigate();
+
+  const [selectedExercises, setSelectedExercises] = useState([]);
+
   const allExercises = useLiveQuery(() => database.exercises.toArray());
+  const sortedExercises = allExercises?.sort((a, b) => {
+    const nameA = a.name.toLowerCase(),
+      nameB = b.name.toLowerCase();
+    if (nameA < nameB) return -1;
+    if (nameA > nameB) return 1;
+    return 0;
+  });
 
   async function handleSubmitList() {
     await database.workouts
@@ -44,11 +52,21 @@ function SelectExercise(props) {
 
   async function loadExercises() {
     const data = await database.workouts.get(Number.parseInt(workoutid));
+
     setSelectedExercises(data.exercises);
+  }
+
+  async function loadAlreadySelectedExercises() {
+    const data = await database.workouts.get(Number.parseInt(workoutid));
+
+    if (data) {
+      setSelectedExercises(data.exercises);
+    }
   }
 
   useEffect(() => {
     if (workoutid) {
+      loadAlreadySelectedExercises();
       loadExercises();
     }
   }, []);
@@ -72,10 +90,10 @@ function SelectExercise(props) {
       </StyledNavbar>
 
       <ShowExercises className='center'>
-        <DaySelectorBtn onClick={() => navigate(`/edit-exercise/${workoutid}`)}>
+        <DaySelectorBtn onClick={() => navigate(`/edit-exercise/`)}>
           Create Exercise
         </DaySelectorBtn>
-        {allExercises?.map((exercise) => {
+        {sortedExercises?.map((exercise) => {
           return (
             <ExerciseSet
               key={exercise.id}

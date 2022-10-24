@@ -72,9 +72,9 @@ function EditExercise(props) {
 
   async function loadExercise() {
     const data = await database.exercises.get(Number.parseInt(exerciseid));
-    setFormData(data);
-    // if (data) {
-    // }
+    if (data) {
+      setFormData(data);
+    }
   }
 
   async function deleteExercise(exId, callback) {
