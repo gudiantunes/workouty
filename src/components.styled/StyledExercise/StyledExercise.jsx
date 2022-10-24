@@ -18,7 +18,11 @@ export const ExerciseWrapper = styled.div`
   & > .name {
     grid-column: span 2;
     font-weight: bold;
+    display: block;
+    overflow-x: scroll;
+    white-space: nowrap;
   }
+
 
   & button {
     background-color: transparent;

@@ -17,12 +17,15 @@ export const WorkoutWrapper = styled.div`
   }
   & > .name {
     font-weight: bold;
+    display: block;
+    overflow-x: scroll;
+    white-space: nowrap;
   }
 
   & button {
     background-color: transparent;
     border: none;
     cursor: pointer;
-    color: var(--accent-color)
+    color: var(--accent-color);
   }
 `;
