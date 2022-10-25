@@ -5,6 +5,7 @@ const GlobalStyle = createGlobalStyle`
     @font-face {
         font-family: 'Formula-A';
         src: url(${FormulaA});
+        font-display: swap;
     }
     :root {
         font-family: Inter, Avenir, Helvetica, Arial, sans-serif;

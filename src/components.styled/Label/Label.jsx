@@ -1,10 +1,16 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const MainTitle = styled.h1`
   color: var(--accent-color);
   font-family: 'Formula-A', sans-serif;
   font-size: 2em;
   text-align: center;
+  width: ${(props) => props.width};
+  ${(props) =>
+    props.fontColor &&
+    css`
+      color: var(--font-color);
+    `};
 `;
 
 export const Title = styled.h2`

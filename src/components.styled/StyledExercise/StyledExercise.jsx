@@ -10,6 +10,7 @@ export const ExerciseWrapper = styled.div`
   border-radius: 0.5em;
   border: 2px solid var(--accent-color);
   padding: 1em 0.2em;
+  width: ${(props) => props.width};
   & > .left,
   & > .right {
     grid-row: span 2;
@@ -22,7 +23,6 @@ export const ExerciseWrapper = styled.div`
     overflow-x: scroll;
     white-space: nowrap;
   }
-
 
   & button {
     background-color: transparent;

@@ -15,7 +15,7 @@ function DoWorkout({ exercise, onSkipExercise, onDoneExercise }) {
   function finishExercise() {
     const exerciseData = {
       ...exercise,
-      lstReps: repsRef.current.value,
+      lstReps: repsRef.current.value || exercise.reps,
       lstTime: timerRef.current.getTime(),
     };
     onDoneExercise(exerciseData);
@@ -23,7 +23,9 @@ function DoWorkout({ exercise, onSkipExercise, onDoneExercise }) {
 
   return (
     <FlexWrapper gap='2em'>
-      <MainTitle className='center'>{exercise.name}</MainTitle>
+      <MainTitle className='center' fontColor width='90%'>
+        {exercise.name}
+      </MainTitle>
       <TextBox className='center'>
         {exercise.description} {timerRef.current?.getTime()}
       </TextBox>
@@ -34,7 +36,7 @@ function DoWorkout({ exercise, onSkipExercise, onDoneExercise }) {
             type='number'
             size='5'
             ref={repsRef}
-            placeholder='0'
+            placeholder={exercise.reps}
           />
           <label htmlFor='reps'>/{exercise.reps} Reps</label>
         </LabeledInput>

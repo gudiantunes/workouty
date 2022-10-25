@@ -31,13 +31,15 @@ function PreviewWorkout(props) {
   function subdivideExercises(exercises) {
     const newExerciseArray = [];
     for (const exercise of exercises) {
-      for (let i = 0; i < Number.parseInt(exercise.sets); i++) {
-        const newExercise = {
-          ...exercise,
-          sets: i + 1,
-          idx: exercise.name + i,
-        };
-        newExerciseArray.push(newExercise);
+      if (exercise) {
+        for (let i = 0; i < Number.parseInt(exercise.sets); i++) {
+          const newExercise = {
+            ...exercise,
+            sets: i + 1,
+            idx: exercise.name + i,
+          };
+          newExerciseArray.push(newExercise);
+        }
       }
     }
     return newExerciseArray;

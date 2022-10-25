@@ -48,7 +48,7 @@ function Editbtn(props) {
 function ExerciseSet(props) {
   const navigate = useNavigate();
   return (
-    <ExerciseWrapper>
+    <ExerciseWrapper {...props}>
       {props.moveable && (
         <MoveBtns moveUp={props.moveUp} moveDown={props.moveDown} />
       )}

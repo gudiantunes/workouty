@@ -61,7 +61,7 @@ export const TimerCircle = styled.div`
   display: grid;
   aspect-ratio: 1/1;
   box-sizing: border-box;
-  width: 90%;
+  width: ${(props) => props.width || '90%'};
   align-items: center;
   justify-content: center;
   margin: 1em auto;

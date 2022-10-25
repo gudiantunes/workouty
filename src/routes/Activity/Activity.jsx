@@ -41,8 +41,8 @@ function Activity(props) {
 
   function getNextActivity() {
     const exId = getNextExercise();
-
-    if (exId >= exerciseidx.length) {
+    
+    if (exId >= exerciseidx.split('-').length) {
       return 'end';
     }
     return 'rest';
@@ -60,7 +60,7 @@ function Activity(props) {
             onDoneExercise={async (exerciseData) => {
               await database.exercises
                 .where('id')
-                .equals(Number.parseInt(exerciseidx[exerciseId]))
+                .equals(exerciseData.id)
                 .modify(exerciseData);
               setActivity(getNextActivity());
             }}

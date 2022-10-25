@@ -2,7 +2,7 @@ import { faPause } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import { MainTitle, Title } from '../../components.styled/Label/Label';
-import { TimerCircle } from '../../components.styled/Wrapper/Wrapper';
+import { FlexWrapper, TimerCircle } from '../../components.styled/Wrapper/Wrapper';
 import ExerciseSet from '../../components/Exercise/ExerciseSet';
 
 function Prepare({ time, setActivity, next, nextExercise }) {
@@ -30,18 +30,23 @@ function Prepare({ time, setActivity, next, nextExercise }) {
   }, [elapsedTime]);
 
   return (
-    <div className='center'>
+    <FlexWrapper className='center'>
       <MainTitle>Get Ready</MainTitle>
       <TimerCircle
         onClick={() => {
           console.log('click');
           setIsPaused(!isPaused);
         }}
+        width='40%'
       >
-        {!isPaused? <span>{time - elapsedTime}</span> : <FontAwesomeIcon icon={faPause}/>}
+        {!isPaused ? (
+          <span>{time - elapsedTime}</span>
+        ) : (
+          <FontAwesomeIcon icon={faPause} />
+        )}
       </TimerCircle>
-      <ExerciseSet exercise={nextExercise} selectable editable />
-    </div>
+      <ExerciseSet exercise={nextExercise} selectable editable width='60%'className='center'/>
+    </FlexWrapper>
   );
 }
 
