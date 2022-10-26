@@ -71,10 +71,10 @@ export const FooterButton = styled.button`
   height: 100%;
   font-size: 2em;
   padding-block: 0.2em;
-  color: var(--background-1);
+  color: ${(props) => props.color || 'var(--background-1)'};
   background-color: var(--accent-color);
   &:hover {
-    background-color: var(--accent-color-dark)
+    background-color: var(--accent-color-dark);
   }
   ${(props) =>
     props.secondary &&

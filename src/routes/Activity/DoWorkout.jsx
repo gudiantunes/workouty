@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { LabeledInput } from '../../components.styled/Input/Input';
 import { MainTitle, TextBox, Title } from '../../components.styled/Label/Label';
 import {
@@ -7,8 +7,11 @@ import {
 } from '../../components.styled/Wrapper/Wrapper';
 import ExerciseFooter from '../../components/ExerciseFooter/ExerciseFooter';
 import ExerciseTimer from '../../components/Timer/ExerciseTimer';
+import { setInputValue } from '../../utils/utils';
 
 function DoWorkout({ exercise, onSkipExercise, onDoneExercise }) {
+  const [finishedTime, setFinishedTime] = useState(false);
+
   const repsRef = useRef();
   const timerRef = useRef();
 
@@ -21,24 +24,32 @@ function DoWorkout({ exercise, onSkipExercise, onDoneExercise }) {
     onDoneExercise(exerciseData);
   }
 
+  useEffect(() => {
+    if (timerRef.current?.done) {
+    }
+  }, [finishedTime]);
+
   return (
     <FlexWrapper gap='2em'>
       <MainTitle className='center' fontColor width='90%'>
         {exercise.name}
       </MainTitle>
-      <TextBox className='center'>
-        {exercise.description} {timerRef.current?.getTime()}
-      </TextBox>
+      <TextBox className='center'>{exercise.description}</TextBox>
       <div style={{ width: '70%' }} className='center'>
-        <LabeledInput className='center' labelFontSize='2em'>
+        <LabeledInput className='center' labelFontSize='1.9em'>
           <input
             id='reps'
             type='number'
-            size='5'
+            size='2'
             ref={repsRef}
-            placeholder={exercise.reps}
+            placeholder={
+              exercise.maxed ? '0' : exercise.timed ? '0' : exercise.reps
+            }
           />
-          <label htmlFor='reps'>/{exercise.reps} Reps</label>
+          <label htmlFor='reps'>
+            {exercise.maxed ? '= ' : '/'}
+            {exercise.reps} {exercise.timed ? 'Secs' : 'Reps'}
+          </label>
         </LabeledInput>
       </div>
       <RepSetWrapper className='center'>
@@ -46,7 +57,9 @@ function DoWorkout({ exercise, onSkipExercise, onDoneExercise }) {
           <label htmlFor='lstReps'>Last Reps:</label>
           <input
             id='lstReps'
-            value={exercise.lstReps ? exercise.lstReps : 0}
+            value={
+              exercise.timed ? '-' : exercise.lstReps ? exercise.lstReps : 0
+            }
             size={2}
             readOnly
           />
@@ -61,7 +74,20 @@ function DoWorkout({ exercise, onSkipExercise, onDoneExercise }) {
           />
         </LabeledInput>
       </RepSetWrapper>
-      <ExerciseTimer className='center' ref={timerRef} />
+      <ExerciseTimer
+        className='center'
+        ref={timerRef}
+        targetTime={exercise.timed ? exercise.reps : null}
+        onTimerDone={() => {
+          setFinishedTime(true);
+        }}
+        onTimeUpdate={(time) => {
+          if (exercise.timed) {
+            setInputValue(repsRef, time);
+          }
+        }}
+      />
+
       <ExerciseFooter onSkip={onSkipExercise} onDone={finishExercise} />
     </FlexWrapper>
   );

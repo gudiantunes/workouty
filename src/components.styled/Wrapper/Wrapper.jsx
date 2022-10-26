@@ -36,11 +36,11 @@ export const ShowExercises = styled.div`
 `;
 
 export const RepSetWrapper = styled.div`
-  display: grid;
+  display: flex;
   grid-template-columns: 1fr 1fr;
   /* flex-direction: column; */
   width: 90%;
-  /* justify-content: space-between; */
+  justify-content: space-between;
   gap: 4em;
   margin-block: 1em;
   box-sizing: border-box;
@@ -91,4 +91,5 @@ export const RoundedWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 1.2em;
 `;

@@ -19,6 +19,8 @@ const ExerciseTimer = forwardRef((props, _ref) => {
   const [isPaused, setIsPaused] = useState(false);
   const [time, setTime] = useState(0);
 
+  const [isCompleted, setIsCompleted] = useState(false);
+
   useEffect(() => {
     let interval = null;
 
@@ -45,6 +47,7 @@ const ExerciseTimer = forwardRef((props, _ref) => {
     getTime: () => {
       return time;
     },
+    done: !props.targetTime || isCompleted,
   }));
 
   function handleStartPause() {
@@ -57,9 +60,22 @@ const ExerciseTimer = forwardRef((props, _ref) => {
     }
   }
 
+  useEffect(() => {
+    props.onTimeUpdate?.(time);
+
+    if (!props.targetTime) return;
+
+    if (time >= props.targetTime) {
+      props.onTimerDone?.();
+      setIsCompleted(true);
+    }
+  }, [time]);
+
   return (
     <RoundedWrapper className={props.className} active={isActive && !isPaused}>
-      <span>Timer: {time} seconds</span>
+      <span>
+        Timer: {props.targetTime ? props.targetTime - time : time} seconds
+      </span>
       <div style={{ display: 'flex', gap: '0.5em' }}>
         {time > 0 && (
           <NoBgButton

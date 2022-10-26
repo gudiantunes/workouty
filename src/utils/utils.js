@@ -41,3 +41,7 @@ export function moveArrayItemDown(array = [], itemIndex = 0) {
   }
   return nArray;
 }
+
+export function setInputValue(iptRef, val) {
+  iptRef.current.value = val;
+}
