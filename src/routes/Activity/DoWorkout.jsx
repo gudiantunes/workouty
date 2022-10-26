@@ -39,7 +39,8 @@ function DoWorkout({ exercise, onSkipExercise, onDoneExercise }) {
         <LabeledInput className='center' labelFontSize='1.9em'>
           <input
             id='reps'
-            type='number'
+            type='search'
+            inputMode='numeric'
             size='2'
             ref={repsRef}
             placeholder={

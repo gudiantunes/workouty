@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const NameField = styled.input.attrs({
-  type: 'text',
+  type: 'search',
   placeholder: 'Name',
 })`
   width: 90%;
@@ -15,6 +15,14 @@ export const NameField = styled.input.attrs({
   border: none;
   border-bottom: 3px solid var(--background-2);
   outline: none;
+  
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-results-button,
+  &::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+  }
+
   &:focus {
     background-color: var(--background-1-light);
     border-bottom-color: var(--background-3);
@@ -67,6 +75,13 @@ export const LabeledInput = styled.div`
     box-sizing: border-box;
     -moz-appearance: textfield;
     padding-inline: 0.5em;
+
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+      -webkit-appearance: none;
+    }
 
     &:focus {
       background-color: var(--background-1-light);

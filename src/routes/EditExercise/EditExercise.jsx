@@ -132,7 +132,8 @@ function EditExercise(props) {
         <LabeledInput>
           <input
             id='sets'
-            type='number'
+            type='search'
+            inputMode='numeric'
             // size='5'
             ref={setsRef}
             placeholder={0}
@@ -165,7 +166,8 @@ function EditExercise(props) {
           ) : null}
           <input
             id='reps'
-            type='text'
+            type='search'
+            inputMode='numeric'
             ref={repsRef}
             placeholder={0}
             defaultValue={formData.reps}

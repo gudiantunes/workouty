@@ -167,7 +167,6 @@ function EditWorkout(props) {
       </ShowDays>
       <form onSubmit={(e) => e.preventDefault()}>
         <NameField
-          type='text'
           placeholder='name'
           ref={nameRef}
           defaultValue={lstName.current}
