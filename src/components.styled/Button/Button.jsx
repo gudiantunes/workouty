@@ -61,8 +61,11 @@ export const NoBgButton = styled.button`
   border: none;
   font-size: 1.5em;
   cursor: pointer;
-  color: ${(props) =>
-    props.active ? 'var(--accent-color)' : 'var(--background-2)'}; ;
+  color: ${(props) => {
+    if (props.active) return 'var(--accent-color)';
+    if (props.color) return props.color;
+    return 'var(--background-2)';
+  }};
 `;
 
 export const FooterButton = styled.button`

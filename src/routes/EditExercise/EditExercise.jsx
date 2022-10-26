@@ -151,7 +151,7 @@ function EditExercise(props) {
           />
           <label htmlFor='time'>sec</label>
         </LabeledInput> */}
-        <LabeledInput>
+        <LabeledInput className='js-start'>
           {!isTimed ? (
             <NoBgButton
               active={isMaxed}

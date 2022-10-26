@@ -87,7 +87,7 @@ function DoWorkout({ exercise, onSkipExercise, onDoneExercise }) {
           }
         }}
       />
-
+      <span>AutoSkip</span>
       <ExerciseFooter onSkip={onSkipExercise} onDone={finishExercise} />
     </FlexWrapper>
   );

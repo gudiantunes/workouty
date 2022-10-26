@@ -23,16 +23,17 @@ const GlobalStyle = createGlobalStyle`
         /* -moz-osx-font-smoothing: grayscale; */
         /* -webkit-text-size-adjust: 100%; */
 
-        --background-1: #323232ff;
-        --background-1-light: #424242ff;
-        --background-1-dark: #2d2d2d;
-        --background-2: #848fa5ff;
-        --background-3: #6d98baff;
-        --accent-color: #ca9867ff;
-        --accent-color-dark: #c28850;
-        --accent-color-light: #cfa276;
-        --accent-color-dark: #c28850;
-        --font-color:   #f5fbefff;
+        --background-1:         #323232;
+        --background-1-light:   #424242;
+        --background-1-dark:    #2d2d2d;
+        --background-2:         #848fa5;
+        --background-3:         #6d98ba;
+        --accent-color:         #ca9867;
+        --accent-color-dark:    #c28850;
+        --accent-color-light:   #cfa276;
+        --accent-color-dark:    #c28850;
+        --font-color:           #f5fbef;
+        --success-color:        #00ff00;
         }
     * {
         margin: 0;

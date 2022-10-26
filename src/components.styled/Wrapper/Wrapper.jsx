@@ -36,15 +36,18 @@ export const ShowExercises = styled.div`
 `;
 
 export const RepSetWrapper = styled.div`
-  display: flex;
-  grid-template-columns: 1fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
   /* flex-direction: column; */
   width: 90%;
-  justify-content: space-between;
-  gap: 4em;
+  /* justify-content: space-between; */
+  gap: 2em;
   margin-block: 1em;
   box-sizing: border-box;
   /* background-color: red; */
+  & > .js-start {
+    justify-self: flex-start;
+  }
 `;
 
 export const TimeSelectorWrapper = styled.div`
@@ -83,8 +86,11 @@ export const RoundedWrapper = styled.div`
   border-radius: 2em;
   background-color: var(--background-1-dark);
   border: 3px solid;
-  border-color: ${(props) =>
-    props.active ? 'var(--accent-color)' : 'var(--background-2)'};
+  border-color: ${(props) => {
+    if (props.active) return 'var(--accent-color)';
+    if (props.color) return props.color;
+    return 'var(--background-2)';
+  }};
   padding: 0.5em 1em;
   width: 75%;
   box-sizing: border-box;

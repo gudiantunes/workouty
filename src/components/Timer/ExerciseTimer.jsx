@@ -20,6 +20,7 @@ const ExerciseTimer = forwardRef((props, _ref) => {
   const [time, setTime] = useState(0);
 
   const [isCompleted, setIsCompleted] = useState(false);
+  const [showElapsed, setShowElapsed] = useState(false);
 
   useEffect(() => {
     let interval = null;
@@ -72,9 +73,15 @@ const ExerciseTimer = forwardRef((props, _ref) => {
   }, [time]);
 
   return (
-    <RoundedWrapper className={props.className} active={isActive && !isPaused}>
-      <span>
-        Timer: {props.targetTime ? props.targetTime - time : time} seconds
+    <RoundedWrapper
+      className={props.className}
+      active={isActive && !isPaused}
+      color={isCompleted ? 'var(--success-color)' : ''}
+    >
+      <span onClick={() => setShowElapsed(!showElapsed)}>
+        Timer:{' '}
+        {showElapsed ? time : props.targetTime ? props.targetTime - time : time}{' '}
+        seconds
       </span>
       <div style={{ display: 'flex', gap: '0.5em' }}>
         {time > 0 && (
@@ -85,11 +92,16 @@ const ExerciseTimer = forwardRef((props, _ref) => {
               setIsActive(false);
               setTime(0);
             }}
+            color={isCompleted ? 'var(--success-color)' : ''}
           >
             <FontAwesomeIcon icon={faRotate} />
           </NoBgButton>
         )}
-        <NoBgButton onClick={handleStartPause} active={isActive && !isPaused}>
+        <NoBgButton
+          onClick={handleStartPause}
+          active={isActive && !isPaused}
+          color={isCompleted ? 'var(--success-color)' : ''}
+        >
           <FontAwesomeIcon icon={getIcon()} />
         </NoBgButton>
       </div>
