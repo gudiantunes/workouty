@@ -87,8 +87,8 @@ export const RoundedWrapper = styled.div`
   background-color: var(--background-1-dark);
   border: 3px solid;
   border-color: ${(props) => {
-    if (props.active) return 'var(--accent-color)';
     if (props.color) return props.color;
+    if (props.active) return 'var(--accent-color)';
     return 'var(--background-2)';
   }};
   padding: 0.5em 1em;

@@ -45,7 +45,7 @@ function Prepare({ time, setActivity, next, nextExercise }) {
           <FontAwesomeIcon icon={faPause} />
         )}
       </TimerCircle>
-      <ExerciseSet exercise={nextExercise} selectable editable width='60%'className='center'/>
+      <ExerciseSet exercise={nextExercise} selectable editable width='60%' className='center'/>
     </FlexWrapper>
   );
 }

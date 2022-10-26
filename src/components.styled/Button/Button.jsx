@@ -62,8 +62,8 @@ export const NoBgButton = styled.button`
   font-size: 1.5em;
   cursor: pointer;
   color: ${(props) => {
-    if (props.active) return 'var(--accent-color)';
     if (props.color) return props.color;
+    if (props.active) return 'var(--accent-color)';
     return 'var(--background-2)';
   }};
 `;
